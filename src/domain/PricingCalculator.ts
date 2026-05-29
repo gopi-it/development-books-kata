@@ -1,9 +1,5 @@
 import type { IDiscountPolicy } from './IDiscountPolicy'
 
-// SOLID (D): Depends on IDiscountPolicy abstraction — inject any conforming implementation.
-// SOLID (S): Does arithmetic only — no grouping, no state.
-// CLEAN CODE: BOOK_PRICE appears once; small focused methods; constructor injection is self-documenting.
-
 const BOOK_PRICE = 50
 
 export class PricingCalculator {

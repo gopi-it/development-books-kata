@@ -1,9 +1,6 @@
 import type { BasketState } from './Basket'
 
-// SOLID (S): Groups books into discount sets — no arithmetic, no pricing.
-// CLEAN CODE: Two named helpers make the algorithm readable without inline comments.
-
-// Greedy pass: repeatedly take the largest possible distinct set.
+// Greedy pass: repeatedly pull the largest possible distinct set until empty.
 function greedyGroup(counts: BasketState): Set<number>[] {
   const working = new Map(counts)
   const groups: Set<number>[] = []
@@ -26,10 +23,8 @@ function greedyGroup(counts: BasketState): Set<number>[] {
   return groups
 }
 
-// Optimization: two sets of 4 cost less than one set of 5 + one set of 3.
-//   5×50×0.75 + 3×50×0.90 = 322.50 EUR
-//   4×50×0.80 + 4×50×0.80 = 320.00 EUR
-// So every (5,3) pair becomes (4,4).
+// A (5-set + 3-set) costs more than two 4-sets — swap them out.
+// 5×0.75 + 3×0.90 = 322.50 vs 4×0.80 + 4×0.80 = 320.00
 function optimizePairs(groups: Set<number>[]): Set<number>[] {
   const result = groups.map(g => new Set(g))
 

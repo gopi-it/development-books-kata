@@ -6,8 +6,6 @@ type Props = {
   onRemove: (bookId: number) => void
 }
 
-// SOLID (S): Renders one basket row — no state, no calculation.
-// CLEAN CODE: Single purpose, no branching.
 export function BasketItem({ book, quantity, onRemove }: Props) {
   return (
     <li className="list-group-item d-flex align-items-center gap-2 px-3 py-2">

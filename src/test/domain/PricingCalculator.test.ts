@@ -1,11 +1,8 @@
-// TDD: Pricing specs — written before PricingCalculator was implemented.
-// Also demonstrates SOLID (L): a MockDiscountPolicy substitutes without breaking the calculator.
 import { describe, it, expect } from 'vitest'
 import { PricingCalculator } from '../../domain/PricingCalculator'
 import { DiscountPolicy } from '../../domain/DiscountPolicy'
 import type { IDiscountPolicy } from '../../domain/IDiscountPolicy'
 
-// SOLID (L) — MockDiscountPolicy can substitute for any IDiscountPolicy
 class MockDiscountPolicy implements IDiscountPolicy {
   constructor(private readonly fixedRate: number) {}
   discountFor(_setSize: number): number {
@@ -51,8 +48,8 @@ describe('PricingCalculator', () => {
     expect(calculator.subtotal(groups)).toBe(250)
   })
 
-  describe('dependency inversion — accepts any IDiscountPolicy', () => {
-    it('applies a 50% flat rate from a stub policy', () => {
+  describe('with a custom policy', () => {
+    it('applies the injected rate instead of the default', () => {
       const calc = new PricingCalculator(new MockDiscountPolicy(0.5))
       expect(calc.calculate([new Set([1, 2])])).toBeCloseTo(50)
     })

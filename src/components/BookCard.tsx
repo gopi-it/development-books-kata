@@ -6,8 +6,6 @@ type Props = {
   onAdd: (bookId: number) => void
 }
 
-// SOLID (S): Renders one book card — no basket state, no pricing.
-// CLEAN CODE: No inline logic in JSX; aria-label makes button accessible.
 export function BookCard({ book, quantity, onAdd }: Props) {
   return (
     <div className="card h-100 shadow-sm position-relative">

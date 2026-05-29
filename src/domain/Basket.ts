@@ -1,6 +1,3 @@
-// SOLID (S): Only manages basket quantity state — no pricing, no UI.
-// CLEAN CODE: Pure functions; inputs are never mutated; one helper removes duplication.
-
 export type BasketState = ReadonlyMap<number, number>
 
 function withUpdate(basket: BasketState, bookId: number, quantity: number): BasketState {

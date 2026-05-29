@@ -1,4 +1,3 @@
-// TDD: Basket pure-function specs — written before implementation.
 import { describe, it, expect } from 'vitest'
 import { add, remove, clear } from '../../domain/Basket'
 import type { BasketState } from '../../domain/Basket'

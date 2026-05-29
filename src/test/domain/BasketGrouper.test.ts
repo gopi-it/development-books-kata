@@ -1,4 +1,3 @@
-// TDD: Grouping algorithm specs — written before BasketGrouper was implemented.
 import { describe, it, expect } from 'vitest'
 import { groupBasket } from '../../domain/BasketGrouper'
 

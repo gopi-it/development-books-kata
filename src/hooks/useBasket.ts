@@ -4,9 +4,6 @@ import type { BasketState } from '../domain/Basket'
 import { price } from '../application/BasketService'
 import type { PriceResult } from '../application/BasketService'
 
-// SOLID (S): Bridges React state and pure domain functions — no business logic here.
-// CLEAN CODE: Components receive stable callbacks; they never call Basket.* directly.
-
 export type UseBasketReturn = {
   counts: BasketState
   totalItems: number

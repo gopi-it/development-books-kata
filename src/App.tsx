@@ -4,8 +4,6 @@ import { BookCard } from './components/BookCard'
 import { BasketSidebar } from './components/BasketSidebar'
 import { DiscountBanner } from './components/DiscountBanner'
 
-// SOLID (S): Layout and composition only — no business logic.
-// CLEAN CODE: Single level of abstraction; all logic delegated to useBasket and components.
 function App() {
   const { counts, totalItems, addBook, removeBook, clearBasket, priceResult } = useBasket()
 

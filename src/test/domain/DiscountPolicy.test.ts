@@ -1,5 +1,3 @@
-// TDD: These specs were written before DiscountPolicy was implemented.
-// Each test name is the specification — they serve as living documentation.
 import { describe, it, expect } from 'vitest'
 import { DiscountPolicy } from '../../domain/DiscountPolicy'
 

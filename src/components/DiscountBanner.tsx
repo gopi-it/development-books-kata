@@ -1,7 +1,5 @@
 import { DISCOUNT_RATES } from '../domain/DiscountPolicy'
 
-// SOLID (O): Reads DISCOUNT_RATES at runtime — changing rates in DiscountPolicy auto-updates this banner.
-// CLEAN CODE: Data-driven rendering; no hardcoded percentages.
 export function DiscountBanner() {
   const discountEntries = [...DISCOUNT_RATES.entries()].filter(([, rate]) => rate > 0)
 

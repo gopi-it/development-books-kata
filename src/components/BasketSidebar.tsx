@@ -10,8 +10,6 @@ type Props = {
   onClear: () => void
 }
 
-// SOLID (S): Renders basket state — no pricing math, no grouping logic.
-// CLEAN CODE: hasItems extracted before JSX; arithmetic stays out of render.
 export function BasketSidebar({ counts, priceResult, onRemove, onClear }: Props) {
   const booksInBasket = CATALOGUE.filter(book => (counts.get(book.id) ?? 0) > 0)
   const hasItems = booksInBasket.length > 0

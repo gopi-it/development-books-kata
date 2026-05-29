@@ -1,5 +1,3 @@
-// CLEAN CODE: Meaningful type; readonly fields enforce value-object immutability.
-// SOLID (O): Add a sixth book here — nothing else changes.
 export type Book = {
   readonly id: number
   readonly title: string
@@ -7,7 +5,7 @@ export type Book = {
   readonly year: number
   readonly description: string
   readonly coverUrl: string
-  readonly coverColor: string  // fallback background while image loads
+  readonly coverColor: string
 }
 
 const GITHUB_IMAGES = 'https://raw.githubusercontent.com/stephane-genicot/katas/master/images'
