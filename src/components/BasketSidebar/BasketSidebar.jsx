@@ -1,17 +1,8 @@
 import './BasketSidebar.css'
 import { CATALOGUE } from '../../domain/Book'
-import type { BasketState } from '../../domain/Basket'
-import type { PriceResult } from '../../application/BasketService'
 import { BasketItem } from '../BasketItem/BasketItem'
 
-type Props = {
-  counts: BasketState
-  priceResult: PriceResult
-  onRemove: (bookId: number) => void
-  onClear: () => void
-}
-
-export function BasketSidebar({ counts, priceResult, onRemove, onClear }: Props) {
+export function BasketSidebar({ counts, priceResult, onRemove, onClear }) {
   const booksInBasket = CATALOGUE.filter(book => (counts.get(book.id) ?? 0) > 0)
   const hasItems = booksInBasket.length > 0
   const totalQty = [...counts.values()].reduce((s, q) => s + q, 0)
@@ -42,7 +33,7 @@ export function BasketSidebar({ counts, priceResult, onRemove, onClear }: Props)
               <BasketItem
                 key={book.id}
                 book={book}
-                quantity={counts.get(book.id)!}
+                quantity={counts.get(book.id)}
                 onRemove={onRemove}
               />
             ))}

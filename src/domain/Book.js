@@ -1,16 +1,6 @@
-export type Book = {
-  readonly id: number
-  readonly title: string
-  readonly author: string
-  readonly year: number
-  readonly description: string
-  readonly coverUrl: string
-  readonly coverColor: string
-}
-
 const GITHUB_IMAGES = 'https://raw.githubusercontent.com/stephane-genicot/katas/master/images'
 
-export const CATALOGUE: readonly Book[] = [
+export const CATALOGUE = [
   {
     id: 1,
     title: 'Clean Code',

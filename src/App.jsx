@@ -33,9 +33,7 @@ function App() {
       <main className="container-fluid py-4 flex-grow-1">
         <div className="row g-4">
           <div className="col-lg-8">
-            <h2 className="h5 fw-bold mb-3">
-              Available Books
-            </h2>
+            <h2 className="h5 fw-bold mb-3">Available Books</h2>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-3">
               {CATALOGUE.map(book => (
                 <div key={book.id} className="col">

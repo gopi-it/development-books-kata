@@ -1,9 +1,7 @@
-import type { BasketState } from './Basket'
-
 // Greedy pass: repeatedly pull the largest possible distinct set until empty.
-function greedyGroup(counts: BasketState): Set<number>[] {
+function greedyGroup(counts) {
   const working = new Map(counts)
-  const groups: Set<number>[] = []
+  const groups = []
 
   while (working.size > 0) {
     const available = [...working.keys()]
@@ -25,7 +23,7 @@ function greedyGroup(counts: BasketState): Set<number>[] {
 
 // A (5-set + 3-set) costs more than two 4-sets — swap them out.
 // 5×0.75 + 3×0.90 = 322.50 vs 4×0.80 + 4×0.80 = 320.00
-function optimizePairs(groups: Set<number>[]): Set<number>[] {
+function optimizePairs(groups) {
   const result = groups.map(g => new Set(g))
 
   let keepOptimizing = true
@@ -50,6 +48,6 @@ function optimizePairs(groups: Set<number>[]): Set<number>[] {
   return result
 }
 
-export function groupBasket(counts: BasketState): Set<number>[] {
+export function groupBasket(counts) {
   return optimizePairs(greedyGroup(counts))
 }

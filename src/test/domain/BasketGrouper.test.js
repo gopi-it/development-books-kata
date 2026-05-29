@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { groupBasket } from '../../domain/BasketGrouper'
 
-function basket(entries: [number, number][]): Map<number, number> {
+function basket(entries) {
   return new Map(entries)
 }
 
@@ -31,7 +31,6 @@ describe('BasketGrouper', () => {
   })
 
   it('produces two groups of size 4 for the kata example basket (not 5+3)', () => {
-    // 2×book1, 2×book2, 2×book3, 1×book4, 1×book5
     const groups = groupBasket(basket([[1, 2], [2, 2], [3, 2], [4, 1], [5, 1]]))
     const sizes = groups.map(g => g.size).sort((a, b) => a - b)
     expect(sizes).toEqual([4, 4])

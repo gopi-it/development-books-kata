@@ -1,11 +1,12 @@
 import { describe, it, expect } from 'vitest'
 import { PricingCalculator } from '../../domain/PricingCalculator'
 import { DiscountPolicy } from '../../domain/DiscountPolicy'
-import type { IDiscountPolicy } from '../../domain/IDiscountPolicy'
 
-class MockDiscountPolicy implements IDiscountPolicy {
-  constructor(private readonly fixedRate: number) {}
-  discountFor(_setSize: number): number {
+class MockDiscountPolicy {
+  constructor(fixedRate) {
+    this.fixedRate = fixedRate
+  }
+  discountFor() {
     return this.fixedRate
   }
 }

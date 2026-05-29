@@ -2,14 +2,14 @@ import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { BookCard } from '../../components/BookCard/BookCard'
-import type { Book } from '../../domain/Book'
 
-const mockBook: Book = {
+const mockBook = {
   id: 1,
   title: 'Clean Code',
   author: 'Robert C. Martin',
   year: 2008,
   description: 'A Handbook of Agile Software Craftsmanship',
+  coverUrl: 'https://example.com/cover.png',
   coverColor: '#1a3a5c',
 }
 

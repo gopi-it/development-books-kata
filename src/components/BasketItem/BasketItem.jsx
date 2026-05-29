@@ -1,13 +1,6 @@
 import './BasketItem.css'
-import type { Book } from '../../domain/Book'
 
-type Props = {
-  book: Book
-  quantity: number
-  onRemove: (bookId: number) => void
-}
-
-export function BasketItem({ book, quantity, onRemove }: Props) {
+export function BasketItem({ book, quantity, onRemove }) {
   return (
     <li className="list-group-item d-flex align-items-center gap-2 px-3 py-2">
       <img

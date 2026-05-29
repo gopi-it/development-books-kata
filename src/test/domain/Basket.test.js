@@ -1,9 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import { add, remove, clear } from '../../domain/Basket'
-import type { BasketState } from '../../domain/Basket'
 
 describe('Basket', () => {
-  const empty: BasketState = new Map()
+  const empty = new Map()
 
   describe('add', () => {
     it('sets quantity to 1 when adding a new book', () => {

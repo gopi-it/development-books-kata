@@ -1,13 +1,6 @@
 import './BookCard.css'
-import type { Book } from '../../domain/Book'
 
-type Props = {
-  book: Book
-  quantity: number
-  onAdd: (bookId: number) => void
-}
-
-export function BookCard({ book, quantity, onAdd }: Props) {
+export function BookCard({ book, quantity, onAdd }) {
   return (
     <div className="card h-100 shadow-sm position-relative book-card">
       {quantity > 0 && (
