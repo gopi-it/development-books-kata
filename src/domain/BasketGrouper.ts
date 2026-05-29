@@ -1,0 +1,60 @@
+import type { BasketState } from './Basket'
+
+// SOLID (S): Groups books into discount sets — no arithmetic, no pricing.
+// CLEAN CODE: Two named helpers make the algorithm readable without inline comments.
+
+// Greedy pass: repeatedly take the largest possible distinct set.
+function greedyGroup(counts: BasketState): Set<number>[] {
+  const working = new Map(counts)
+  const groups: Set<number>[] = []
+
+  while (working.size > 0) {
+    const available = [...working.keys()]
+    const group = new Set(available)
+    groups.push(group)
+
+    for (const id of available) {
+      const remaining = (working.get(id) ?? 0) - 1
+      if (remaining <= 0) {
+        working.delete(id)
+      } else {
+        working.set(id, remaining)
+      }
+    }
+  }
+
+  return groups
+}
+
+// Optimization: two sets of 4 cost less than one set of 5 + one set of 3.
+//   5×50×0.75 + 3×50×0.90 = 322.50 EUR
+//   4×50×0.80 + 4×50×0.80 = 320.00 EUR
+// So every (5,3) pair becomes (4,4).
+function optimizePairs(groups: Set<number>[]): Set<number>[] {
+  const result = groups.map(g => new Set(g))
+
+  let keepOptimizing = true
+  while (keepOptimizing) {
+    const idx5 = result.findIndex(g => g.size === 5)
+    const idx3 = result.findIndex(g => g.size === 3)
+
+    if (idx5 === -1 || idx3 === -1) {
+      keepOptimizing = false
+      break
+    }
+
+    const fiveGroup = result[idx5]
+    const threeGroup = result[idx3]
+    const extras = [...fiveGroup].filter(id => !threeGroup.has(id))
+    const bookToMove = extras[0]
+
+    result[idx5] = new Set([...fiveGroup].filter(id => id !== bookToMove))
+    result[idx3] = new Set([...threeGroup, bookToMove])
+  }
+
+  return result
+}
+
+export function groupBasket(counts: BasketState): Set<number>[] {
+  return optimizePairs(greedyGroup(counts))
+}
