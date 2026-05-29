@@ -13,17 +13,13 @@ type Props = {
 export function BasketSidebar({ counts, priceResult, onRemove, onClear }: Props) {
   const booksInBasket = CATALOGUE.filter(book => (counts.get(book.id) ?? 0) > 0)
   const hasItems = booksInBasket.length > 0
-  const hasDiscount = priceResult.discount > 0
+  const totalQty = [...counts.values()].reduce((s, q) => s + q, 0)
+  const discountPct = Math.round((priceResult.discount / priceResult.subtotal) * 100)
 
   return (
-    <div className="card shadow">
+    <div className="card shadow-sm">
       <div className="card-header d-flex justify-content-between align-items-center">
-        <div className="d-flex align-items-center gap-2 fw-bold">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5"/>
-          </svg>
-          Your Basket
-        </div>
+        <span className="fw-bold">Your Basket</span>
         {hasItems && (
           <button className="btn btn-outline-danger btn-sm" onClick={onClear} aria-label="Clear basket">
             Clear Basket
@@ -32,9 +28,9 @@ export function BasketSidebar({ counts, priceResult, onRemove, onClear }: Props)
       </div>
 
       {!hasItems && (
-        <div className="text-center text-muted py-4 px-3">
-          <p className="mb-0">Your basket is empty.</p>
-          <p className="small">Add books from the catalogue.</p>
+        <div className="empty-basket">
+          <p className="mb-1">Your basket is empty.</p>
+          <p className="small mb-0">Add books from the catalogue.</p>
         </div>
       )}
 
@@ -51,22 +47,20 @@ export function BasketSidebar({ counts, priceResult, onRemove, onClear }: Props)
             ))}
           </ul>
 
-          <div className="card-body border-top pt-3">
-            <div className="d-flex justify-content-between text-muted small mb-1">
-              <span>Subtotal ({[...counts.values()].reduce((s, q) => s + q, 0)} books)</span>
+          <div className="card-body">
+            <div className="price-row text-muted small">
+              <span>Subtotal ({totalQty} books)</span>
               <span>{priceResult.subtotal.toFixed(2)} EUR</span>
             </div>
 
-            {hasDiscount && (
-              <div className="d-flex justify-content-between text-success fw-semibold mb-1">
-                <span>Discount ({Math.round((priceResult.discount / priceResult.subtotal) * 100)}%)</span>
+            {priceResult.discount > 0 && (
+              <div className="price-row price-savings">
+                <span>Discount ({discountPct}%)</span>
                 <span>-{priceResult.discount.toFixed(2)} EUR</span>
               </div>
             )}
 
-            <hr className="my-2" />
-
-            <div className="d-flex justify-content-between fw-bold fs-5">
+            <div className="price-row total">
               <span>Total</span>
               <span className="text-success">{priceResult.total.toFixed(2)} EUR</span>
             </div>

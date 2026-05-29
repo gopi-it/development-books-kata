@@ -1,22 +1,20 @@
 import { DISCOUNT_RATES } from '../domain/DiscountPolicy'
 
 export function DiscountBanner() {
-  const discountEntries = [...DISCOUNT_RATES.entries()].filter(([, rate]) => rate > 0)
+  const entries = [...DISCOUNT_RATES.entries()].filter(([, rate]) => rate > 0)
 
   return (
-    <div className="alert alert-info mt-3 mb-0 d-flex align-items-start gap-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="mt-1 flex-shrink-0" viewBox="0 0 16 16" aria-hidden="true">
-        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
-      </svg>
-      <div>
-        <strong>Discounts:</strong>{' '}
-        {discountEntries.map(([size, rate], i) => (
+    <div className="discount-banner d-flex align-items-center gap-2">
+      <span>ℹ️</span>
+      <span>
+        <strong>Discounts: </strong>
+        {entries.map(([size, rate], i) => (
           <span key={size}>
             {size} books ({Math.round(rate * 100)}%)
-            {i < discountEntries.length - 1 && ' • '}
+            {i < entries.length - 1 && ' • '}
           </span>
         ))}
-      </div>
+      </span>
     </div>
   )
 }

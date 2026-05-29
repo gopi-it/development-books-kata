@@ -13,8 +13,8 @@ export function BasketItem({ book, quantity, onRemove }: Props) {
         src={book.coverUrl}
         alt=""
         aria-hidden="true"
-        className="rounded flex-shrink-0"
-        style={{ width: 40, height: 52, objectFit: 'contain', background: book.coverColor }}
+        className="basket-thumbnail"
+        style={{ background: book.coverColor }}
       />
       <div className="flex-grow-1 min-w-0">
         <div className="fw-semibold text-truncate small">{book.title}</div>
