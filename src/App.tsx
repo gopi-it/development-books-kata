@@ -1,3 +1,4 @@
+import './App.css'
 import { CATALOGUE } from './domain/Book'
 import { useBasket } from './hooks/useBasket'
 import { BookCard } from './components/BookCard'

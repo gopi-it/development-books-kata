@@ -1,0 +1,25 @@
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0;
+}
+
+.price-row.total {
+  font-size: 1.15rem;
+  font-weight: 700;
+  border-top: 1px solid #dee2e6;
+  padding-top: 10px;
+  margin-top: 6px;
+}
+
+.price-savings {
+  color: #198754;
+  font-weight: 600;
+}
+
+.empty-basket {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #6c757d;
+}

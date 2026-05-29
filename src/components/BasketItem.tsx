@@ -1,3 +1,4 @@
+import './BasketItem.css'
 import type { Book } from '../domain/Book'
 
 type Props = {

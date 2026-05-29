@@ -1,3 +1,4 @@
+import './DiscountBanner.css'
 import { DISCOUNT_RATES } from '../domain/DiscountPolicy'
 
 export function DiscountBanner() {
