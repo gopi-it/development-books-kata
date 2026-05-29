@@ -1,8 +1,8 @@
 import './BasketSidebar.css'
-import { CATALOGUE } from '../domain/Book'
-import type { BasketState } from '../domain/Basket'
-import type { PriceResult } from '../application/BasketService'
-import { BasketItem } from './BasketItem'
+import { CATALOGUE } from '../../domain/Book'
+import type { BasketState } from '../../domain/Basket'
+import type { PriceResult } from '../../application/BasketService'
+import { BasketItem } from '../BasketItem/BasketItem'
 
 type Props = {
   counts: BasketState

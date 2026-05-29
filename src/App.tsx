@@ -1,9 +1,9 @@
 import './App.css'
 import { CATALOGUE } from './domain/Book'
 import { useBasket } from './hooks/useBasket'
-import { BookCard } from './components/BookCard'
-import { BasketSidebar } from './components/BasketSidebar'
-import { DiscountBanner } from './components/DiscountBanner'
+import { BookCard } from './components/BookCard/BookCard'
+import { BasketSidebar } from './components/BasketSidebar/BasketSidebar'
+import { DiscountBanner } from './components/DiscountBanner/DiscountBanner'
 
 function App() {
   const { counts, totalItems, addBook, removeBook, clearBasket, priceResult } = useBasket()

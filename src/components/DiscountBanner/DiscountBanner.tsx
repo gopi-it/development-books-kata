@@ -1,5 +1,5 @@
 import './DiscountBanner.css'
-import { DISCOUNT_RATES } from '../domain/DiscountPolicy'
+import { DISCOUNT_RATES } from '../../domain/DiscountPolicy'
 
 export function DiscountBanner() {
   const entries = [...DISCOUNT_RATES.entries()].filter(([, rate]) => rate > 0)

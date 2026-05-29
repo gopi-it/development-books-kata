@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { BasketSidebar } from '../../components/BasketSidebar'
+import { BasketSidebar } from '../../components/BasketSidebar/BasketSidebar'
 import type { PriceResult } from '../../application/BasketService'
 
 function emptyResult(): PriceResult {
